@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quiz Mode</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/quiz_mode.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/images/icons/logo.png') }}">
+    <script src="{{ url_for('static', filename='js/quiz_mode.js') }}"></script>
+</head>
+
+<body>
+
+    <!-- Section to navigate and display questions -->
+    <div id="study-section">
+        <div class="study-header">
+            <!-- Left Part with back button, submit button, and reset button -->
+            <div class="left-part">
+                <img id="back-button" src="../static/assets/images/icons/back.png" alt="Go back" title="Go Back" onclick="window.location.href='{{ url_for('home') }}'" style="cursor: pointer;">
+                <button class="submit-button" id="submit-answers" onclick="submitAnswers()">Submit</button>
+                <p class="score-text" id="score"></p>
+                <img id="reset-button" src="../static/assets/images/icons/reset.png" alt="Reset" title="Reset Questions" onclick="resetButtonClick()" style="cursor: pointer;" class="icon-wrap">
+            </div>
+
+            <!-- Middle Part for question navigation -->
+            <div id="middle-section">
+                <label for="question-nav">Question</label>
+                <input type="number" id="question-nav" name="question-nav" min="1" max="5">
+                <span id="total-questions">/ 5</span>
+                <button class="go-button" id="go-to-question" onclick="goToQuestionGo()">Go</button>
+            </div>
+
+            <!-- Rightmost Part for additional options -->
+            <div class="right-part">
+                <div id="right-section">
+                    <select id="favorites-dropdown" onchange="changeView()">
+                        <option>All Questions</option>
+                        <option>Favorites</option>
+                        <option>Incorrect Questions</option>
+                        <option>Answered Questions</option>
+                        <option>Unanswered Questions</option>
+                    </select>
+                    <img id="star-button" src="../static/assets/images/icons/star_black.png" alt="Add to Favorites" title="Add to Favorites" onclick="toggleFavorites()" style="cursor: pointer;" class="icon-wrap">
+                    <img id="shuffle-button" src="../static/assets/images/icons/shuffle.png" alt="Shuffle" title="Shuffle Questions" onclick="shuffleQuestions()" style="cursor: pointer;" class="icon-wrap">
+                    <img id="search-button" src="../static/assets/images/icons/search.png" alt="Search" title="Search Questions" onclick="openSearch()" style="cursor: pointer;" class="search-wrap">
+                </div>
+            </div>
+        </div>
+
+        <!-- Display Question and Options -->
+        <div id="question-card">
+            <p id="question-text">Question.</p>
+            <div class="option-container" id="optionA" onclick="selectOption('A')">
+                <p class="option-text">Option A</p>
+                <div class="option-divider"></div>
+                <p class="option-letter">A</p>
+            </div>
+            <div class="option-container" id="optionB" onclick="selectOption('B')">
+                <p class="option-text">Option B</p>
+                <div class="option-divider"></div>
+                <p class="option-letter">B</p>
+            </div>
+            <div class="option-container" id="optionC" onclick="selectOption('C')">
+                <p class="option-text">Option C</p>
+                <div class="option-divider"></div>
+                <p class="option-letter">C</p>
+            </div>
+            <div class="option-container" id="optionD" onclick="selectOption('D')">
+                <p class="option-text">Option D</p>
+                <div class="option-divider"></div>
+                <p class="option-letter">D</p>
+            </div>
+
+            <!-- Controls Container for navigating questions -->
+            <div class="controls-container">
+                <div class="prev-container">
+                    <img id="prev-img-button" src="../static/assets/images/icons/previous.png" alt="Previous Question" onclick="prevQuestion()" width="40px" height="40px" style="cursor: pointer;" class="icon-wrap">
+                </div>
+                <div class="flip-card-container" id="flip-card">
+                    <div class="flip-card-side flip-card-front">
+                        <h3 class="card-content">Reveal Answer</h3>
+                    </div>
+                    <div class="flip-card-side flip-card-back">
+                        <h3 class="card-content" id="correct-answer-card">Correct Answer</h3>
+                    </div>
+                </div>
+                <div class="next-container">
+                    <img id="next-img-button" src="../static/assets/images/icons/next.png" alt="Next Question" onclick="nextQuestion()" width="40px" height="40px" style="cursor: pointer;" class="icon-wrap">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section to input URLs for scraping -->
+    <div id="scrape-section">
+        <div align="center">
+            <label for="multiple-urls" style="font-size: 1.5em;">Enter URLs:</label>
+            <br><br> 
+        </div>
+        <div class="textarea-container">
+            <textarea id="multiple-urls" name="multiple-urls" rows="15" cols="150" placeholder="Input URLs here in the format: [base_url], [start_url], [end_url]"></textarea>
+        </div>
+        <div align="center">
+            <button class="scrape-button" id="start-scraping">Scrape</button>
+        </div>
+    </div>
+
+    <!-- Section to display progress during processing -->
+    <div id="processing-section">
+        Initiate the scraping process by clicking on the 'Scrape' button.
+        <!-- Include spinner or loader GIF inside this div -->
+    </div>
+
+    <!-- Search Modal Section -->
+    <div id="search-modal" class="search-modal">
+        <div class="search-modal-content">
+            <span class="close" onclick="closeSearch()">&times;</span>
+            <input type="text" id="search-input" onkeyup="searchQuestions()" placeholder="Search for questions">
+            <div id="search-results"></div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal Section -->
+    <div id="confirmation-modal" class="search-modal">
+        <div class="confirmation-modal-content">
+            <span class="close" onclick="closeConfirmationModal()">&times;</span>
+            <div class="warning-text">
+                <p>Are you sure you want to shuffle the questions?</p>
+                <p>This will <span class="underline-on-hover">remove</span> the currently selected options in all questions.</p>
+            </div>
+            <div class="confirm-btn-container"> <!-- Added container for the buttons -->
+                <button id="confirm-yes" class="confirm-btn">YES</button>
+                <button id="confirm-no" class="confirm-btn">NO</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unanswered Questions Modal Section -->
+    <div id="unanswered-questions-modal" class="search-modal">
+        <div class="confirmation-modal-content">
+            <span class="close" onclick="closeUnansweredQuestionsModal()">&times;</span>
+            <div class="warning-text">
+                <p>You have unanswered questions.</p>
+                <p><span class="underline-on-hover" onclick="goToUnansweredQuestions()">Click here</span> to answer your unanswered questions.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Summary Modal Section -->
+    <div id="results-summary-modal" class="search-modal">
+        <div class="confirmation-modal-content">
+            <span class="close" onclick="closeResultsSummaryModal()">&times;</span>
+            <p class="warning-text" id="results-summary-text"></p>
+        </div>
+    </div>
+
+    <!-- Incorrect Questions Modal Section -->
+    <div id="incorrect-questions-modal" class="search-modal">
+        <div class="confirmation-modal-content">
+            <span class="close" onclick="closeIncorrectUnansweredQuestionsModal()">&times;</span>
+            <p class="warning-text" id="incorrect-questions-list"></p>
+        </div>
+    </div>
+
+    <!-- Reset Questions Modal Section -->
+    <div id="reset-questions-modal" class="search-modal">
+        <div class="confirmation-modal-content">
+            <span class="close" onclick="closeResetQuestionsModal()">&times;</span>
+            <div class="warning-text">
+                <p>Are you sure you want to reset the questions?</p>
+                <p>This will <span class="underline-on-hover">remove</span> the currently selected options in answered questions.</p>
+            </div>
+            <div class="confirm-btn-container"> 
+                <button id="confirm-yes" class="confirm-btn" onclick="resetQuestions()">YES</button>
+                <button id="confirm-no" class="confirm-btn" onclick="closeResetQuestionsModal()">NO</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

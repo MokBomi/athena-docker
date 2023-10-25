@@ -1,0 +1,453 @@
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/firacode/v22/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_D1sFVc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://fonts.gstatic.com/s/firacode/v22/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_NprFVc.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Fira Sans';
+    font-style: italic;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/firasans/v17/va9C4kDNxMZdWfMOD5VvkojO.ttf) format('truetype');
+ }
+
+@font-face {
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 800;
+    src: url(https://fonts.gstatic.com/s/spartan/v18/l7gAbjR61M69yt8Z8w6FZf9WoBxdBrEFvm6O.ttf) format('truetype');
+}
+
+body {
+    font-family: 'Fira Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+.welcome-text {
+    text-align: center;
+}
+
+.welcome-text h1 {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.welcome-text p {
+    font-size: 3em !important;
+    font-family: 'Fira Sans', sans-serif !important;
+    font-weight: bold;
+}
+
+.welcome-text p::after {
+    content: "";
+    border-left: 2px solid #b54a81;
+    margin-left: 5px;
+    height: 1em;
+    animation: blink 1s step-end infinite;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #1d1f21;
+    margin: 1em 0 3.5em 0;
+    opacity: 0;
+    width: 0%;
+    transition: all 0.5s ease-in;
+}
+
+@keyframes lineFadeIn {
+  0% {
+    opacity: 0;
+    width: 0%;
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+@keyframes blink{
+  0%{ opacity: 1; }
+  50%{ opacity: 0; }
+  100%{ opacity: 1; }
+}
+
+.button-container {
+    width: fit-content;
+    margin: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: 0 0;
+    border: 2px solid #1d1f21;
+    border-radius: 8px;
+    color: #1d1f21;
+    display: block;
+    font: 1.25em/1 Spartan,"League Spartan",Avenir,Futura,sans-serif;
+    letter-spacing: .075em;
+    margin: 0.5em auto 1.25em auto;
+    min-width: 10em;
+    padding: 1em 1.5em .75em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.button:hover {
+    background-color: #1d1f21;
+    color: #ffffff;
+}
+
+#feature-header {
+    opacity: .8;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.75em;
+    margin-top: 1em;
+}
+
+.features {
+    list-style-type: none;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.features li::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: url('../assets/images/icons/check.png') no-repeat;
+    background-size: contain;
+    animation: pop 0.5s ease forwards;
+    animation-delay: 0s;
+}
+
+@keyframes sweep {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.features li {
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: sweep 0.5s ease forwards;
+    position: relative;
+    padding-left: 30px;
+    padding-bottom: 0.25em;
+    animation-delay: 0s;
+}
+
+.features li:nth-child(n) {
+  animation-delay: calc(n * 0.1s);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#about, #feature-header, .modes-container, .features li {
+  opacity: 0;
+}
+
+h2,
+h3,
+h4 {
+    font-family: Spartan, "League Spartan", Avenir, Futura, sans-serif;
+    letter-spacing: -.05em;
+    margin-bottom: .5rem;
+}
+
+h2 {
+    text-transform: lowercase;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin-top: 1.5rem;
+}
+
+h4 {
+    text-transform: lowercase;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.modes-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.study-mode, .quiz-mode {
+    margin-top: -1em;
+    width: 45%;
+}
+
+.box {
+    background-color: #7e335a;
+    box-sizing: border-box;
+    border-radius: 8px;
+    color: #fdf8ef;
+    width: 100%;
+    padding: 1em 1em 1em 3em;
+    transition: background-color 0.3s ease;
+    overflow: auto;
+    height: auto;
+}
+
+.box-container {
+    display: block;
+    justify-content: space-between;
+    padding-top: 1em;
+    padding-bottom: 3em;
+    overflow: auto;
+}
+
+.box:hover {
+    background-color: #a1306b;
+}
+
+.highlight {
+    color: #fffcfa;
+    font-family: Spartan,"League Spartan",Avenir,Futura,sans-serif;
+    letter-spacing: -.05em;
+    text-transform: lowercase;
+    position: relative;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #b54a81; 
+    bottom: 0;
+    left: 0;
+    transition: all .3s;
+}
+
+.highlight:hover::after {
+    width: 100%;
+    left: 0; 
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 1.5em;
+    background-color: #1d1f21;
+}
+
+.navbar-header {
+    color: #fffcfa;
+    margin: 0;
+}
+
+.navbar-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.navbar-links a {
+    color: #fffcfa;
+    text-decoration: none;
+    position: relative;
+    text-transform: lowercase; 
+    font-family: 'Fira Code', monospace;
+    font-weight: 700;
+}
+
+.navbar-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #b54a81;
+    bottom: 0;
+    left: 0;
+    transition: width .3s;
+}
+
+.navbar-links a:hover::after {
+    width: 100%;
+}
+
+.underline-on-hover {
+    -webkit-box-shadow: 0 -2px #b54a81 inset;
+    box-shadow: 0 -2px #b54a81 inset;
+    transition: color 0.5s;
+}
+
+.underline-on-hover:hover {
+    color: #b54a81;
+}
+
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1em 1em 2em 8em;
+    background-color: #1d1f21;
+    color: #fffcfa;
+}
+
+.footer-column {
+    flex-basis: 25%;
+    max-width: 25%;
+    padding: 0 1em;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .footer-column {
+        flex-basis: 50%;
+        max-width: 50%;
+    }
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1em;
+    background-color: #1d1f21;
+    color: #fffcfa;
+}
+
+.footer-column {
+    flex-grow: 1;
+    flex-basis: 25%;
+    max-width: 25%;
+    padding: 0 1em;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .footer-column {
+        flex-basis: 50%;
+        max-width: 50%;
+    }
+}
+
+.footer-heading {
+    font-family: 'Fira Code', monospace;
+    font-weight: bold;
+    text-transform: none;
+}
+
+.footer-column p,
+.footer-column ul li {
+    font-family: 'Fira Code';
+    font-style: normal;
+    font-weight: 400;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+}
+
+.footer-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    max-width: 0;
+    height: 2px;
+    background: #b54a81;
+    bottom: 0;
+    left: 0;
+    transition: max-width 0.3s;
+}
+
+.footer-link:hover::after {
+    max-width: 100%;
+}
+
+.footer-column a {
+    color: #fffcfa;
+}
+
+.footer-column a:hover {
+    color: #fffcfa;
+}
+
+.footer-column ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.footer-column ul a {
+    position: relative;
+    color: #fffcfa;
+    transition: color 0.5s;
+    text-decoration: none;
+}
+
+.footer-column ul a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    max-width: 0;
+    height: 2px;
+    background: #b54a81;
+    bottom: 0;
+    left: 0;
+    transition: max-width 0.3s;
+}
+
+.footer-column ul a:hover::after {
+    max-width: 100%;
+}
