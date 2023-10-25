@@ -15,7 +15,10 @@
         <div class="study-header">
             <!-- Left Part with back button -->
             <div class="left-part">
-                <img id="back-button" src="../static/assets/images/icons/back.png" alt="Go back" title="Go Back" onclick="window.location.href='{{ url_for('home') }}'" style="cursor: pointer;">
+                <div id="left-section">
+                    <img id="back-button" src="../static/assets/images/icons/back.png" alt="Go back" title="Go Back" onclick="window.location.href='{{ url_for('home') }}'" style="cursor: pointer;">
+                    <img id="reset-button" src="../static/assets/images/icons/reset.png" alt="Reset" title="Reset Questions" onclick="resetButtonClick()" style="cursor: pointer;" class="icon-wrap">
+                </div>
             </div>
 
             <!-- Middle Part for question navigation -->
@@ -124,6 +127,21 @@
             <div class="confirm-btn-container"> <!-- Added container for the buttons -->
                 <button id="confirm-yes" class="confirm-btn">YES</button>
                 <button id="confirm-no" class="confirm-btn">NO</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset Questions Modal Section -->
+    <div id="reset-questions-modal" class="search-modal">
+        <div class="confirmation-modal-content">
+            <span class="close" onclick="closeResetQuestionsModal()">&times;</span>
+            <div class="warning-text">
+                <p>Are you sure you want to reset the questions?</p>
+                <p>This will <span class="underline-on-hover">remove</span> the currently selected options in answered questions.</p>
+            </div>
+            <div class="confirm-btn-container"> 
+                <button id="confirm-yes" class="confirm-btn" onclick="resetQuestions()">YES</button>
+                <button id="confirm-no" class="confirm-btn" onclick="closeResetQuestionsModal()">NO</button>
             </div>
         </div>
     </div>

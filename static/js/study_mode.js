@@ -456,6 +456,38 @@ function searchQuestions() {
     }
 }
 
+// Reset Functions
+function resetButtonClick() {
+  if (questions && questions.length) {
+    openResetQuestionsModal();  
+  }
+}
+
+function openResetQuestionsModal() {
+    document.getElementById('reset-questions-modal').style.display = "block";
+}
+
+function closeResetQuestionsModal() {
+    document.getElementById('reset-questions-modal').style.display = "none";
+}
+
+function resetQuestions() {
+    score = 0;
+    document.getElementById('score').innerText = 0; 
+    userChoices = {};
+    if (selectedOption) {
+        document.getElementById(`option${selectedOption}`).classList.remove('selected');
+        selectedOption = null;
+    }
+
+    document.getElementById('favorites-dropdown').value = 'All Questions';
+    changeView();
+    currentQuestionIndex = 0; 
+    displayQuestion(currentQuestionIndex);
+
+    closeResetQuestionsModal();
+}
+
 // Save State Functions
 function selectOption(option) {
     const currentQuestionID = questions[currentQuestionIndex].id;
