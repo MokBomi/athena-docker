@@ -1,6 +1,10 @@
 # athena-docker
 
-Athena, named after the Greek goddess of wisdom, is a :star2: Quiz Web Application :star2: that automates fetching questions from IndiaBIX. By saving users' valuable time, the tool significantly enhances the process of skill enhancement. This version of the web app is primed for a Docker environment.
+Athena is a Quiz Web Application that automates the process of fetching questions from IndiaBIX, saving users valuable time. This web app allows users to input multiple URLs to answer questions in bulk. This version of the web app is designed for running within a Docker environment.
+
+## ⚠️ Note: Memory Considerations and Usage Recommendations
+
+Please be aware that although this Docker version of the repository is designed to work on most computers, Docker has a default memory allocation that can be insufficient for data-intensive tasks. Therefore, it is recommended to run this for a maximum of 1 URL initially. Increasing the memory allocation in the Docker application settings might allow for processing of up to 3 URLs, but it's crucial to experiment cautiously. Please note that a safety net of 1 or 2 URLs is recommended. If you intend to process a larger number of URLs, you might consider using the athena-cli. However, please be aware that the athena-cli may not be compatible with all systems.
 
 ## :pushpin: Instructions
 
@@ -37,29 +41,29 @@ In this one URL, you’ll have a total of 50 questions loaded to the web app, as
 
 ## :boom: Features
 
-### :book: Study Mode
+### Study Mode
 
 - **Reset Button:** Reset questions to question number 1 and removes selected options.
 - **Shuffle Button:** Changes the order of questions.
-- **Favorites Button:** Mark and revisit beloved questions.
+- **Favorites Button:** Mark and revisit favorited questions.
 - **Search Button:** Navigate through questions.
 
-### :bell: Quiz Mode
+### Quiz Mode
 
-Ultimately similar to Study Mode but with additional features; these unique features in Quiz Mode include:
+In quiz mode, it's quite similar to Study Mode, but with additional features. These additional features in Quiz Mode include:
 
-- **Scoring system** :chart_with_upwards_trend:
-- **Review of incorrect questions** :x:
-- **Selection of answered and unanswered questions from the dropdown menu** :arrow_down_small:
+- **Scoring system** 
+- **Review of incorrect questions** 
+- **Selection of answered and unanswered questions from the dropdown menu** 
 
 ## :camera: Sample Screenshots
 
-### :book: Study Mode
+### Study Mode
 
-![Study Mode Sample](relative/path/to/study_mode_img.jpg?raw=true "Study Mode Sample")
+![Study Mode Sample](study_mode_sample.png?raw=true "Study Mode Sample")
 
-### :bell: Quiz Mode
+### Quiz Mode
 
-![Quiz Mode Sample](relative/path/to/quiz_mode_img.jpg?raw=true "Quiz Mode Sample")
+![Quiz Mode Sample](quiz_mode_sample.png?raw=true "Quiz Mode Sample")
 
-Caught a bug 🐞:? Have some new ideas :bulb:? Feel free to contribute. If you find this project useful, do not forget to star :star: it. This app was created to aid preparation for the electronics engineering board exam in the Philippines. Happy learning! :tada:
+If you encounter issues or have suggestions, feel free to contribute. Don't forget to :star2: this project if it helped you. I created this app to help with my preparation for the electronics engineering board exam in the Philippines.
