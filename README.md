@@ -1,16 +1,16 @@
 # athena-docker
 
-Athena is a Quiz Web Application that automates the process of fetching questions from IndiaBIX, saving users valuable time. This web app allows users to input multiple URLs to answer questions in bulk. This version of the web app is designed for running within a Docker environment.
+Athena, named after the Greek goddess of wisdom, is a :star2: Quiz Web Application :star2: that automates fetching questions from IndiaBIX. By saving users' valuable time, the tool significantly enhances the process of skill enhancement. This version of the web app is primed for a Docker environment.
 
-## Instructions
+## :pushpin: Instructions
 
 ### Step 1: Install Docker
 
-Install Docker by visiting the [Docker website](https://www.docker.com/get-docker/) and following the instructions provided for your specific operating system. If you are running a lower version of the operating system that does not support Docker Desktop, consider using [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install/) instead.
+Visit the [Docker website](https://www.docker.com/get-docker/) and follow the guidelines particular to your OS for installing Docker. If your operating system version does not support Docker Desktop, you may consider using [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install/) instead.
 
 ### Step 2: Clone and Run
 
-After installing Docker, run the following commands in your terminal:
+After installing Docker, execute the following commands in your terminal:
 
 ```bash
 git clone <repository_URL>
@@ -35,31 +35,31 @@ https://www.indiabix.com/electronics-and-communication-engineering/networks-anal
 
 In this one URL, you’ll have a total of 50 questions loaded to the web app, as each URL number in IndiaBIX typically has 5 questions. This feature will save you time and help you focus on the questions with the added features.
 
-## Features
+## :boom: Features
 
-### Study Mode
+### :book: Study Mode
 
-- Reset button to reset questions to question number 1 and remove selected options.
-- Shuffle button to change the order of questions.
-- Favorites button to mark and revisit favorite questions.
-- Search button to navigate through questions.
+- **Reset Button:** Reset questions to question number 1 and removes selected options.
+- **Shuffle Button:** Changes the order of questions.
+- **Favorites Button:** Mark and revisit beloved questions.
+- **Search Button:** Navigate through questions.
 
-### Quiz Mode
+### :bell: Quiz Mode
 
-In quiz mode, it's quite similar to Study Mode, but with additional features. These additional features in Quiz Mode include:
+Ultimately similar to Study Mode but with additional features; these unique features in Quiz Mode include:
 
-- Scoring system
-- Review of incorrect questions
-- Selection of answered and unanswered questions from the dropdown menu
+- **Scoring system** :chart_with_upwards_trend:
+- **Review of incorrect questions** :x:
+- **Selection of answered and unanswered questions from the dropdown menu** :arrow_down_small:
 
-## Sample Screenshots
+## :camera: Sample Screenshots
 
-### Study Mode
+### :book: Study Mode
 
 ![Study Mode Sample](relative/path/to/study_mode_img.jpg?raw=true "Study Mode Sample")
 
-### Quiz Mode
+### :bell: Quiz Mode
 
 ![Quiz Mode Sample](relative/path/to/quiz_mode_img.jpg?raw=true "Quiz Mode Sample")
 
-If you encounter issues or have suggestions, feel free to contribute. Don't forget to star this project if it helped you. I created this app to help with my preparation for the electronics engineering board exam in the Philippines.
+Caught a bug 🐞:? Have some new ideas :bulb:? Feel free to contribute. If you find this project useful, do not forget to star :star: it. This app was created to aid preparation for the electronics engineering board exam in the Philippines. Happy learning! :tada:
