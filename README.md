@@ -4,7 +4,7 @@ Athena is a Quiz Web Application that automates the process of fetching question
 
 ## ⚠️ Note: Memory Considerations and Usage Recommendations
 
-Please be aware that although this Docker version of the repository is designed to work on most computers, Docker has a default memory allocation that can be insufficient for data-intensive tasks. Therefore, it is recommended to run this for a maximum of 1 URL initially. Increasing the memory allocation in the Docker application settings might allow for processing of up to 3 URLs, but it's crucial to experiment cautiously. Please note that a safety net of 1 or 2 URLs is recommended. If you intend to process a larger number of URLs, you might consider using the athena-cli. However, please be aware that the athena-cli may not be compatible with all systems.
+Please be aware that although this Docker version of the repository is designed to work on most computers, Docker has a default memory allocation that can be insufficient for data-intensive tasks. Therefore, it is recommended to run this for a maximum of 1 URL initially. Increasing the memory allocation in the Docker application settings might allow for processing of up to 3 URLs, but it's crucial to experiment cautiously. Please note that a safety net of 1 or 2 URLs is recommended. If you intend to process a larger number of URLs, you might consider using the [athena-cli](https://github.com/MokBomi/athena-cli). However, please be aware that the [athena-cli](https://github.com/MokBomi/athena-cli) may not be compatible with all systems.
 
 ## :pushpin: Instructions
 
